@@ -3,10 +3,16 @@ import os
 import json
 import re
 from collections import defaultdict
+
 LEFT_COL_X_LIMIT = 250  # Adjust depending on actual PDF layout
 def extract_patent_id(text):
-    match = re.search(r'U\.S\. Patent No\. (\d{7,})', text)
-    return f"US{match.group(1)}" if match else "UNKNOWN"
+    patent_id_match = re.search(r'U\.S\. Patent No\. (\d{1,3},\d{3}(?:,\d{3})?)', text)
+    if patent_id_match:
+        raw_id = patent_id_match.group(1)
+        patent_id = "US" + raw_id.replace(",", "")
+    else:
+        patent_id = "Not found"
+    return patent_id
 def parse_pdf_by_layout(pdf_path):
     with pdfplumber.open(pdf_path) as pdf:
         all_features = {}
@@ -89,8 +95,9 @@ def get_patent_id_from_label(label):
         'C': 'US8428148'
     }.get(label, f'Unknown_{label}')
 # Example usage
-pdf_path = "patents\PATROLL_OptiMorphix_US8230105.pdf"
+pdf_path = "PATROLL_OptiMorphix_US8621061.pdf"
 result = parse_pdf_by_layout(pdf_path)
 with open("parsed_output.json", "w") as f:
     json.dump(result, f, indent=2)
 print(":white_check_mark: Parsing complete. Output saved to parsed_output.json")
+
