@@ -37,7 +37,7 @@ To run the main contest PDF scraper to collect data from the winning contest PDF
 
 
 **Autopat_scraper_and_evaluator.py**
-* End-to-end script that combines contest scraping and evaluation. Outputs contest title, troll patent ID, prior art IDs, and URL, then evaluates performance metrics. Each contest is stored on a <li> tag on the main page. The hierarchy is structured like this, storing the link.
+* End-to-end script that combines contest scraping and evaluation. Outputs contest title, troll patent ID, prior art IDs, and URL, then evaluates performance metrics. Each contest is stored on a &lt;li&gt; tag on the main page. The hierarchy is structured like this, storing the link.
 
 
 ![image](https://github.com/user-attachments/assets/6e9b7792-2500-49bf-9130-66f5aed6792d)
