@@ -93,7 +93,7 @@ The output file is titled won_patent_contests.json and it is structured as follo
 * contestLink: link to the contest page
 
 
-
+**Note:** This documentation is based off of Zailey's fork, located at https://github.com/Zailey-Lawrence/Patroll-PDF-Web-Scraper. It seems to have the PDF scraper as well as optimizations from Jathin. 
 
 
 
